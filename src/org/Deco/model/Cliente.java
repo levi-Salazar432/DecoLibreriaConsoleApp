@@ -29,6 +29,7 @@ public class Cliente {
     }
 
     public void setNombreCliente(String nombreCliente) {
+        String nombreClienteMayuscula = nombreCliente.toUpperCase();
         this.nombreCliente = nombreCliente;
     }
 
@@ -37,6 +38,7 @@ public class Cliente {
     }
 
     public void setApellidoCliente(String apellidoCliente) {
+        String nombreClienteMayuscula = nombreCliente.toUpperCase();
         this.apellidoCliente = apellidoCliente;
     }
 
@@ -47,4 +49,5 @@ public class Cliente {
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
+    
 }
