@@ -2,16 +2,16 @@
 package org.Deco.model;
 
 
-public class Editoriales {
+public class Editorial {
     
     private String nit;
     private String nombreEditorial;
     private String telefonoEditorial;
     private String direccionEditorial; // Mapea a 'direccion_editoria' en tu BD
 
-    public Editoriales() {}
+    public Editorial() {}
 
-    public Editoriales(String nit, String nombreEditorial, String telefonoEditorial, String direccionEditorial) {
+    public Editorial(String nit, String nombreEditorial, String telefonoEditorial, String direccionEditorial) {
         this.nit = nit;
         this.nombreEditorial = nombreEditorial;
         this.telefonoEditorial = telefonoEditorial;
