@@ -60,7 +60,7 @@ public class Autor {
     public void setBiografia(String biografia) {
         this.biografia = biografia;
     }
-
+    
     @Override
     public String toString() {
         return "ID: " + idAutor + " | Nombre: " + nombreAutor + " " + apellidoAutor + " | Nacionalidad: " + nacionalidad;
