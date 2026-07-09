@@ -16,6 +16,9 @@ Scanner leer = new Scanner(System.in);
             switch (opcion) {
                 case 1:
                     System.out.println("Cliente");
+                    ClienteConsoleView vistaCliente = new ClienteConsoleView(); 
+                    ClienteController controladorCliente = new ClienteController(vistaCliente);
+                    controladorCliente.iniciar(); 
                     break;
                 case 2:
                     System.out.println("Autor");
