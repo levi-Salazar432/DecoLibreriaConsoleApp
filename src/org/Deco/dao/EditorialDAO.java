@@ -8,7 +8,7 @@ public interface EditorialDAO {
     //firmas de metodos
     //CRUD
     boolean insertar(Editorial editorial);
-    List<Editorial> listar ();
+    List<Editorial> ListarTodos ();
     Editorial buscar(String nit);
     boolean actualizar(Editorial editorial);
     boolean eliminar(String nit);
