@@ -1,5 +1,6 @@
 package org.Deco.view;
 import java.util.Scanner; 
+import org.Deco.controller.AutorController;
 
 public class MenuPrincipal {
 Scanner leer = new Scanner(System.in);
@@ -19,6 +20,9 @@ Scanner leer = new Scanner(System.in);
                     break;
                 case 2:
                     System.out.println("Autor");
+                    AutorConsoleView vistaAutor = new AutorConsoleView();
+                    AutorController controladorAutor= new AutorController (vistaAutor);
+                    controladorAutor.iniciar();
                     break;
                 case 3:
                     System.out.println("Categoria");

@@ -20,6 +20,10 @@ public class Autor {
         this.biografia = biografia;
     }
 
+    public Autor(int aInt, String string, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Getters y Setters omitidos por brevedad (Recuerda generarlos en NetBeans con Alt+Insert)
     public int getIdAutor() {
         return idAutor;
