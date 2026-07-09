@@ -11,6 +11,8 @@ public class Categoria {
     //atributos de clase 
     private int idCategoria ;
     private String nombreCategoria;
+    public String getIdCategoria;
+    public String getNombreCategoria;
     
     //construcctores 
     //vacio
