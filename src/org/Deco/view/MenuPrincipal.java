@@ -1,5 +1,6 @@
 package org.Deco.view;
 import java.util.Scanner; 
+import org.Deco.controller.CategoriaController;
 
 public class MenuPrincipal {
 Scanner leer = new Scanner(System.in);
@@ -15,13 +16,16 @@ Scanner leer = new Scanner(System.in);
             opcion = Integer.parseInt(leer.nextLine());
             switch (opcion) {
                 case 1:
-                    System.out.println("Cliente");
+                    System.out.println("Categoria");                
                     break;
                 case 2:
                     System.out.println("Autor");
                     break;
                 case 3:
                     System.out.println("Categoria");
+                    CategoriaConsoleView visitaCategoria = new CategoriaConsoleView(); 
+                    CategoriaController controladorCategoria = new CategoriaController(visitaCategoria);
+                    controladorCategoria.iniciar(); 
                     break;
                 case 0:
                     System.out.println("Adiós Vaquero!");
