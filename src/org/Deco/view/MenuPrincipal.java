@@ -1,5 +1,6 @@
 package org.Deco.view;
 import java.util.Scanner; 
+import org.Deco.controller.ClienteController; 
 
 public class MenuPrincipal {
 Scanner leer = new Scanner(System.in);
