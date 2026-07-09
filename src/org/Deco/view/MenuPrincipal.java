@@ -24,7 +24,7 @@ Scanner leer = new Scanner(System.in);
                     System.out.println("Categoria");
                     break;
                 case 4:
-                    System.out.println("Adiós Vaquero!");
+                    System.out.println("Adios Vaquero!");
                     break;   
                 case 5:
                     System.out.println("Editoriales");
