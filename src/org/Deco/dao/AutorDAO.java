@@ -6,7 +6,7 @@ import org.Deco.model.Autor;
 public interface AutorDAO {
     
     boolean insertar(Autor autor);
-    List<Autor> listar();
+    List<Autor> listarTodos();
     Autor buscar (int id_autor);
     boolean actualizar(Autor autor);
     boolean eliminar (int id_autor);
