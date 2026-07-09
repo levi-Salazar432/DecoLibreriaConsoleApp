@@ -5,6 +5,7 @@ import org.Deco.model.Categoria;
 import org.Deco.dao.CategoriaDAO;
 
 import java.util.List; 
+import java.sql.CallableStatement; 
 import java.util.ArrayList; 
 import java.sql.PreparedStatement; 
 import java.sql.Connection;
@@ -13,15 +14,41 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class CategoriaDAOImpl implements CategoriaDAO{
-
-    @Override
-    public boolean insertar(Categoria categoria) {
-            return false; 
+    
+     @Override
+    public List<Categoria> ListarTodos() {
+        //crear lista 
+        List<Categoria>  categoria = new ArrayList<>();//null 
+        //crear nuestras consultas 
+        String consulta = "{ call sp_listar_categoria()}";
+        //maperar el resultado de la consulta a objeto y lo agregaamos a la lista 
+        // Try with resources / intentar con recursos -----> cierra el recurso al completar el intetno
+        try (Connection conexion = Conexion.getInstancia().conectar();
+                CallableStatement consultaCall = conexion.prepareCall(consulta);
+                ResultSet tablaResultado = consultaCall.executeQuery(); )  {
+                //ResultSet tabla = Conexion.getInstancia().conectar().prepareCall(consulta).executeQuery();
+         //ciclo para rellenar mi lista 
+                //verificar cada fila del result set 
+                //va a guardar cada celda dentro de cada atributo de objeto
+           while (tablaResultado.next()) {
+               categoria.add(new Categoria(
+                               tablaResultado.getInt("idCategoria"),
+                               tablaResultado.getString("nombreCategoria")          
+               ));
+               
+           }
+            
+        }catch (SQLException e ) {   
+            System.err.print("Error al listar Categoria: " + e.getMessage());
+                    
+        } 
+               
+        return categoria; 
     }
 
     @Override
-    public List<Categoria> listar() {
-        return null; 
+    public boolean crear(Categoria categoria) {
+            return false; 
     }
 
     @Override

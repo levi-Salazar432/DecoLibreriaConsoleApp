@@ -1,5 +1,6 @@
 package org.Deco.model;
 
+//POJO: Nombre, atributos, constructores, getter y setter 
 public class Categoria {
     /*
     create table categorias(
