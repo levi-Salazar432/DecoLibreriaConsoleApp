@@ -9,7 +9,7 @@ public interface CategoriaDAO {
     //CRUD 
    boolean crear(Categoria categoria);
    List<Categoria> ListarTodos();
-   Categoria buscar(int idCategoria);
+   Categoria buscarPorId(int idCategoria);
    boolean actualizar(Categoria categoria);
    boolean eliminar(int idCategoria);
 }

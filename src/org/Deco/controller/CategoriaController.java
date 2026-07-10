@@ -3,6 +3,7 @@ package org.Deco.controller;
 
 import org.Deco.dao.CategoriaDAO;
 import org.Deco.dao.impl.CategoriaDAOImpl;
+import org.Deco.model.Categoria;
 import org.Deco.view.CategoriaConsoleView;
 
 public class CategoriaController {
@@ -18,8 +19,19 @@ public class CategoriaController {
         int opcion ;
         do {
             opcion = vista.mostrarMenu(); 
-            if (opcion == 3 ) {
+            switch (opcion ) {
+                case 1 : 
+                    break ; 
+                case 2: 
                     listar(); 
+                    
+                break; 
+                case 3: 
+                    buscar(); 
+                    
+                    break;
+                    case 4: 
+                                
             }
             
         }while (opcion != 0) ; 
@@ -28,4 +40,18 @@ public class CategoriaController {
     private void listar(){ 
         vista.mostrarListaCategoria(dao.ListarTodos());
     }
-}
+
+    private void buscar() {
+        int id = vista.solicitarIdCategoria(); 
+        Categoria categoria = dao.buscarPorId(id);
+        if (categoria != null ) {
+            vista.mostrarCategoria(categoria);
+        }else {
+            vista.mostrarMensaje("Cliente  no encontrado con el ID  " + id); 
+        }
+                
+    }      
+   
+           
+    }
+

@@ -32,8 +32,8 @@ public class CategoriaDAOImpl implements CategoriaDAO{
                 //va a guardar cada celda dentro de cada atributo de objeto
            while (tablaResultado.next()) {
                categoria.add(new Categoria(
-                               tablaResultado.getInt("idCategoria"),
-                               tablaResultado.getString("nombreCategoria")          
+                               tablaResultado.getInt("ID"),
+                               tablaResultado.getString("CATEGORIA")          
                ));
                
            }
@@ -52,11 +52,39 @@ public class CategoriaDAOImpl implements CategoriaDAO{
     }
 
     @Override
-    public Categoria buscar(int idCategoria) {
-        return null; 
-    }
-
-    @Override
+    public Categoria buscarPorId(int idCategoria) {
+        //objeto 
+        Categoria  categoria= new Categoria(); 
+        
+        //consultas 
+        String consultaSQL = "{Call sp_buscar_categorias(?)}"; 
+        //mapeamos el ResulSet al objeto(categoria) segun sus atributos y la fila devuelta
+        try ( 
+             Connection conexion = Conexion.getInstancia().conectar();
+            CallableStatement consultaCall = conexion.prepareCall(consultaSQL) 
+        ) {
+            consultaCall .setInt(1,idCategoria);
+            ResultSet tablaResultado = consultaCall.executeQuery();
+            if (tablaResultado.next()) {
+                categoria.setIdCategoria(tablaResultado.getInt("ID"));
+                categoria.setNombreCategoria(tablaResultado.getString("CATEGORIA"));
+                return categoria; 
+                }
+        else {
+                System.out.println("No existe la Categoria con ese ID");
+                return null; 
+                
+        }
+                
+            } catch (SQLException e ) {
+                  System.err.print("Error al buscar Categoria: " + e.getMessage());
+                  
+                    
+                    }                                 
+              return null; 
+          }
+       
+        @Override
     public boolean actualizar(Categoria categoria) {
         return false; 
     }
@@ -67,3 +95,5 @@ public class CategoriaDAOImpl implements CategoriaDAO{
     }
     
 }
+
+

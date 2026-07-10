@@ -34,8 +34,8 @@ public class CategoriaConsoleView {
     //mostrar el detalle de una categoria 
     public void mostrarCategoria(Categoria categoria){
         System.out.println("--- DATOS DE CATEGORIA---");
-        System.out.println("idCategoria " + categoria.getIdCategoria);
-        System.out.println("nombreCategoria " + categoria.getNombreCategoria);
+        System.out.println("ID " + categoria.getIdCategoria());
+        System.out.println("CATEGORIA " + categoria.getNombreCategoria());
         System.out.println("");
     }
     
@@ -43,15 +43,18 @@ public class CategoriaConsoleView {
     public void mostrarListaCategoria(List<Categoria> categorias){
         System.out.println("--- LISTA DE CATEGORIA---");
         //tabla usando la propiedad %-[tamaño de columnas)s 
-        System.out.println("|       ID       |       Nombre       |");
-        
+        System.out.printf("%-10s %-10s", " | ID | " , " | NOMBRE  | \n " );       
         for (Categoria categoria : categorias){
-        System.out.printf("%-10s $-10s " ,
+        System.out.printf("%-10s %-10s\n " ,
                 categoria.getIdCategoria() , categoria.getNombreCategoria());
         
     }
         
             
         }
+
+public void mostrarMensaje(String mensaje) {
+    System.out.println(mensaje);
+} 
     }
 
