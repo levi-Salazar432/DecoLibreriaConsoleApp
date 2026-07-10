@@ -38,14 +38,14 @@ public class EditorialDAOImpl implements EditorialDAO{
                 while (tablaResultado.next()) {
                     editorial.add(new Editorial(
                             tablaResultado.getString("nit"),
-                            tablaResultado.getString("NombreEditorial"),
-                            tablaResultado.getString("telefonoEditorial"),
-                            tablaResultado.getString("direccionEditorial")
+                            tablaResultado.getString("nombre_editorial"),
+                            tablaResultado.getString("telefono_editorial"),
+                            tablaResultado.getString("direccion_editoria")
                     ));
             }
             
         }catch (SQLException e) {
-            System.err.print("Error al listar Clientes:"+ e.getMessage());
+            System.err.print("Error al listar Editoriales:"+ e.getMessage());
         }      
             
         //retornamos una lista
@@ -53,8 +53,29 @@ public class EditorialDAOImpl implements EditorialDAO{
     }
 
     @Override
-    public Editorial buscar(String nit) {
-        return null;
+    public Editorial buscarPorId(String nit) {
+        //objeto
+        Editorial editorial = new Editorial();
+        
+        //consulta
+        String consultaSQL = "{call sp_buscareditorial(?)}";
+        //mapeamos el ResultSEt al Objeto(Cliente) segun sus atrubutos y la fila devuelta
+        try (Connection conexion = Conexion.getInstancia().conectar();CallableStatement consultaCall = conexion.prepareCall(consultaSQL);){
+            consultaCall.setString(1, nit);
+            ResultSet tablaResultado = consultaCall.executeQuery();
+            if (tablaResultado.next()) {
+                editorial.setNit(tablaResultado.getString("nit"));
+                editorial.setNombreEditorial(tablaResultado.getString("nombre_editorial"));          
+                editorial.setTelefonoEditorial(tablaResultado.getString("telefono_editorial"));
+                editorial.setDireccionEditorial(tablaResultado.getString("direccion_editoria"));   
+            }else{
+                return null; 
+            }
+        }catch (SQLException e){
+            System.err.print("Error al buscar Editorial:" + e.getMessage());
+        }
+        //retornamos el objeto
+        return editorial;
     }
 
     @Override

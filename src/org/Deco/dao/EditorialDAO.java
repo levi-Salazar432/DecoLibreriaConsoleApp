@@ -9,7 +9,7 @@ public interface EditorialDAO {
     //CRUD
     boolean insertar(Editorial editorial);
     List<Editorial> ListarTodos ();
-    Editorial buscar(String nit);
+    Editorial buscarPorId(String nit);
     boolean actualizar(Editorial editorial);
     boolean eliminar(String nit);
 }

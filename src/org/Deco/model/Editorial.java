@@ -51,6 +51,10 @@ public class Editorial {
     public void setDireccionEditorial(String direccionEditorial) {
         this.direccionEditorial = direccionEditorial;
     }
+
+    public String getnumeroDeTelefonoEditorial() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
 

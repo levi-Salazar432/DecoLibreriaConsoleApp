@@ -1,5 +1,7 @@
 package org.Deco.view;
 import java.util.Scanner; 
+import org.Deco.controller.EditorialController;
+
 
 public class MenuPrincipal {
 Scanner leer = new Scanner(System.in);
@@ -27,8 +29,10 @@ Scanner leer = new Scanner(System.in);
                     System.out.println("Adiós Vaquero!");
                     break;   
                 case 5:
-                    System.out.println("Editoriales");
-                    break;
+                        System.out.println("Editoriales");
+                        EditorialConsoleView vistaEditorial = new EditorialConsoleView();
+                        EditorialController controladorEditorial = new EditorialController(vistaEditorial);
+                        controladorEditorial.iniciar();
                 default:
                     System.out.println("NO existe esta opción");
             }
