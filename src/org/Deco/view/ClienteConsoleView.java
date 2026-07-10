@@ -52,18 +52,19 @@ public class ClienteConsoleView {
              System.out.println("nombrei: " + cliente.getNombreCliente()); 
              System.out.println("apellido: " + cliente.getApellidoCliente()); 
              System.out.println("correo electronico: " + cliente.getCorreoElectronico()); 
+             System.out.println("---\n");
          }
    
    public void mostrarListaClientes(List<Cliente> clientes) {
        System.out.println("_____Lista clientes_____");
        //tabla usando la propiedad %-[tamaño columna]s
-       System.out.println("|     cui     |     nombre     |     apellido     |     correo electronico      ");
-       System.out.printf("%-10s %-10s %-10s %-10s" ,  "cui " , "nombre" , "apellido" , "correo electronico");
+       System.out.printf("%-10s %-10s %-10s %-10s" ,  "| cui | "," | nombre | " ," | apellido | " , "| correo electronico  | \n");
        
        for (Cliente cliente : clientes) {
-           System.out.printf("%-10s %-10s %-10s %-10s",
+           System.out.printf("%-10s %-10s %-10s %-10s\n",
                           cliente.getCui(), cliente.getNombreCliente(), cliente.getApellidoCliente(), cliente.getCorreoElectronico()); 
-       }
+         }
+        System.out.println(" --- Fin de clientes ---\n");
    }
     
    //para mostrar mensaje personalizado 

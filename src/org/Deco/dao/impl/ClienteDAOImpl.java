@@ -36,13 +36,13 @@ public class ClienteDAOImpl implements ClienteDAO{
              while(tablaResultado.next()) {
                   clientes.add(new Cliente(
                                 tablaResultado.getLong("cui"),
-                                tablaResultado.getString("nombreCliente"),
-                                tablaResultado.getString("apellidoCliente"),
-                                tablaResultado.getString("correoElectronico")
+                                tablaResultado.getString("nombre_cliente"),
+                                tablaResultado.getString("apellido_cliente"),
+                                tablaResultado.getString("correo_electronico")
                   )); 
                   }  
         }  catch (SQLException e ) {
-              System.err.println("Error al listar Clientes: " + e.getMessage()); 
+              System.err.print("Error al listar Clientes: " + e.getMessage()); 
         }
             
         //retornamos una lista 
@@ -51,7 +51,30 @@ public class ClienteDAOImpl implements ClienteDAO{
 
     @Override
     public Cliente buscar(long cui) {
-        return null; 
+        //objeto
+        Cliente cliente = new Cliente();
+        
+        //consulta 
+        String consultaSQL = "{call sp_buscarcliente(?)}"; 
+        //mapeamos el ResultSet al objeto(Cliente) segun sus atributos y la fila devuelta 
+        try (Connection conexion = Conexion.getInstancia().conectar(); 
+                    CallableStatement consultaCall = conexion.prepareCall(consultaSQL);){
+              consultaCall.setLong(1,cui); 
+              ResultSet tablaResultado = consultaCall.executeQuery(); 
+              if (tablaResultado.next()) {
+                  cliente.setCui(tablaResultado.getLong("cui")); 
+                  cliente.setNombreCliente(tablaResultado.getString("nombre_cliente")); 
+                  cliente.setApellidoCliente(tablaResultado.getString("apellido_cliente")); 
+                  cliente.setCorreoElectronico(tablaResultado.getString("correo_electronico")); 
+              }
+              else {
+                  return null; 
+              }
+        }catch (SQLException e) {
+            System.err.print("Error al buscar Clientes: " + e.getMessage()); 
+        }
+        //retornamos el objeto
+        return cliente; 
     }
 
     @Override
