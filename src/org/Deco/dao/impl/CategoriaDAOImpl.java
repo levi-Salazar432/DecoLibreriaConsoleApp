@@ -91,7 +91,30 @@ public class CategoriaDAOImpl implements CategoriaDAO{
 
     @Override
     public boolean eliminar(int idCategoria) {
-        return false; 
+        String consultaSQL = "{Call sp_eliminar_categoria(?)}";
+        
+         try ( 
+             Connection conexion = Conexion.getInstancia().conectar();
+            CallableStatement consultaCall = conexion.prepareCall(consultaSQL) 
+        ) {
+       consultaCall.setInt(1, idCategoria); 
+       
+       int filasAfectadas = consultaCall.executeUpdate(); 
+       
+       if (filasAfectadas > 0) { 
+           System.out.println("Categoria eliminada con exito");
+           return true; 
+       }else {
+           System.out.println("No se encontro nuguna categoria con ese ID");
+         return false;   
+       }
+       
+       }catch (SQLException e) { 
+             System.out.println("Error al elminiar categoria " + e.getMessage());
+             return false; 
+       }
+       
+        
     }
     
 }

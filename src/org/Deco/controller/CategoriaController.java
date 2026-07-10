@@ -31,6 +31,10 @@ public class CategoriaController {
                     
                     break;
                     case 4: 
+                        
+                   break ; 
+                    case 5: 
+                        eliminar(); 
                                 
             }
             
@@ -51,6 +55,19 @@ public class CategoriaController {
         }
                 
     }      
+   private void eliminar() { 
+       int id = vista.solicitarIdCategoria(); 
+       
+       if (vista.confirmarAccion("¿Está seguro de que desea eliminar esta categoría? (s/n): ")) {
+           boolean eliminado = dao.eliminar(id);
+           
+           if (eliminado){
+               vista.mostrarMensaje("Categoria eliminada con exito");
+           }else { 
+               vista.mostrarMensaje("No se pudo eliminar la categoria. Verifique el ID");
+           }
+       }
+   }
    
            
     }

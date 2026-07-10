@@ -56,5 +56,11 @@ public class CategoriaConsoleView {
 public void mostrarMensaje(String mensaje) {
     System.out.println(mensaje);
 } 
+
+public boolean confirmarAccion(String mensaje) {
+        System.out.print(mensaje);
+        String respuesta = leer.nextLine(); 
+        return respuesta.equalsIgnoreCase("s");
+    }
     }
 
