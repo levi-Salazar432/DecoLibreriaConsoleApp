@@ -13,13 +13,13 @@ public class AutorConsoleView {
         int opcion = 0;
 
         //todo el menu
-        System.out.println("--- GESTION DE CLIENTES ---");
-        System.out.println("-1 CREAR nuevo cliente");
-        System.out.println("-2 LISTAR nuevo cliente");
-        System.out.println("-3 BUSCAR nuevo cliente");
-        System.out.println("-4 MODIFICAR nuevo cliente");
-        System.out.println("-5 ELIMINAR nuevo cliente");
-        System.out.println("-6 REGRESAR nuevo cliente");
+        System.out.println("--- GESTION DE AUTORES ---");
+        System.out.println("-1 CREAR nuevo Autor");
+        System.out.println("-2 LISTAR nuevo Autor");
+        System.out.println("-3 BUSCAR nuevo Autor");
+        System.out.println("-4 MODIFICAR nuevo Autor");
+        System.out.println("-5 ELIMINAR nuevo Autor");
+        System.out.println("-6 REGRESAR nuevo Autor");
         System.out.println(" SLECCIONE UNA OPCION ---->");
         opcion = Integer.parseInt(leer.nextLine());
 
@@ -38,8 +38,11 @@ public class AutorConsoleView {
 
     public void MostrarAutor(Autor autor) {
         System.out.println("--- DATOS DEL AUTOR ---");
-        System.out.println("ID: " + autor.getIdAutor());
-        System.out.println("NOMBRE: " + autor.getNombreAutor());
+        System.out.println("id_autor" + autor.getIdAutor());
+        System.out.println("nombre_autor" + autor.getNombreAutor());
+        System.out.println("apellido_autor" + autor.getApellidoAutor());
+        System.out.println("nacionalidad" + autor.getNacionalidad());
+        System.out.println("biografia" + autor.getBiografia());
     }
 
     public void mostrarListaAutores(List<Autor> autores) {
@@ -55,4 +58,37 @@ public class AutorConsoleView {
     public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
+
+    
+public void mostrarListaAutor(List<Autor> listarTodos) {
+    System.out.println("--- LISTA DE AUTORES ---");
+
+    for (Autor autor : listarTodos) {
+        System.out.println("ID: " + autor.getIdAutor());
+        System.out.println("Nombre: " + autor.getNombreAutor());
+        System.out.println("Apellido: " + autor.getApellidoAutor());
+        System.out.println("Nacionalidad: " + autor.getNacionalidad());
+        System.out.println("Biografía: " + autor.getBiografia());
+        System.out.println("------------------------");
+    }
+}
+
+
+    
+public int solicitarIdAutor() {
+    System.out.print("Ingrese el ID del autor: ");
+    return Integer.parseInt(leer.nextLine());
+}
+
+
+    
+public void mostrarAutor(Autor autor) {
+    System.out.println("--- DATOS DEL AUTOR ---");
+    System.out.println("ID: " + autor.getIdAutor());
+    System.out.println("Nombre: " + autor.getNombreAutor());
+    System.out.println("Apellido: " + autor.getApellidoAutor());
+    System.out.println("Nacionalidad: " + autor.getNacionalidad());
+    System.out.println("Biografía: " + autor.getBiografia());
+}
+
 }

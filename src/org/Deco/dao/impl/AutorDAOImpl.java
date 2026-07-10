@@ -19,7 +19,7 @@ public class AutorDAOImpl implements AutorDAO {
         public List<Autor> listarTodos() {
         List<Autor> autor = new ArrayList<>();
 
-        String consulta = "{call sp_listar_autor()}";
+        String consulta = "{call sp_listarautores()}";
 
         try (
         Connection conexion = Conexion.getInstancia().conectar();
@@ -31,7 +31,9 @@ public class AutorDAOImpl implements AutorDAO {
             autor.add(new Autor(
                 tabla.getInt("id_autor"),
                 tabla.getString("nombre_autor"),
-                tabla.getString("apellido_autor")
+                tabla.getString("apellido_autor"),
+                tabla.getString("nacionalidad"),
+                tabla.getString("biografia")
             ));
         }
 
@@ -48,10 +50,42 @@ public class AutorDAOImpl implements AutorDAO {
         return false;
     }
 
-    @Override
-    public Autor buscar(int id_autor) {
-        return null;
+    
+@Override
+public Autor buscar(int id_autor) {
+
+    // objeto
+    Autor autor = new Autor();
+
+    // consulta
+    String consultaSQL = "{call sp_buscarAutor(?)}";
+
+    try (
+        Connection conexion = Conexion.getInstancia().conectar();
+        CallableStatement consultaCall = conexion.prepareCall(consultaSQL);
+    ) {
+
+        consultaCall.setInt(1, id_autor);
+
+        ResultSet tablaResultado = consultaCall.executeQuery();
+
+        if (tablaResultado.next()) {
+            autor.setId_autor(tablaResultado.getInt("id_autor"));
+            autor.setNombre_autor(tablaResultado.getString("nombre_autor"));
+            autor.setApellido_autor(tablaResultado.getString("apellido_autor"));
+            autor.setNacionalidad(tablaResultado.getString("nacionalidad"));
+            autor.setBiografia(tablaResultado.getString("biografia"));
+        } else {
+            System.out.println("No existe el Autor con ese ID");
+        }
+
+    } catch (SQLException e) {
+        System.err.print("Error al buscar Autor: " + e.getMessage());
     }
+
+    return autor;
+}
+
 
     @Override
     public boolean actualizar(Autor autor) {
@@ -62,5 +96,11 @@ public class AutorDAOImpl implements AutorDAO {
     public boolean eliminar(int id_autor) {
         return false;
     }
+
+    @Override
+    public Autor buscarPorId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+    
 

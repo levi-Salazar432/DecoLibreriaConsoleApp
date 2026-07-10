@@ -10,5 +10,7 @@ public interface AutorDAO {
     Autor buscar (int id_autor);
     boolean actualizar(Autor autor);
     boolean eliminar (int id_autor);
+
+    public Autor buscarPorId(int id);
     
 }

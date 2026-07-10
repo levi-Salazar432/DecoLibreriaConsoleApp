@@ -1,5 +1,5 @@
-package org.Deco.model;
 
+package org.Deco.model;
 
 public class Autor {
 
@@ -12,7 +12,8 @@ public class Autor {
     public Autor() {
     }
 
-    public Autor(int idAutor, String nombreAutor, String apellidoAutor, String nacionalidad, String biografia) {
+    public Autor(int idAutor, String nombreAutor, String apellidoAutor,
+                 String nacionalidad, String biografia) {
         this.idAutor = idAutor;
         this.nombreAutor = nombreAutor;
         this.apellidoAutor = apellidoAutor;
@@ -20,11 +21,14 @@ public class Autor {
         this.biografia = biografia;
     }
 
-    public Autor(int aInt, String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Autor(int idAutor, String nombreAutor, String apellidoAutor) {
+        this.idAutor = idAutor;
+        this.nombreAutor = nombreAutor;
+        this.apellidoAutor = apellidoAutor;
     }
 
-    // Getters y Setters omitidos por brevedad (Recuerda generarlos en NetBeans con Alt+Insert)
+    // Getters y Setters
+
     public int getIdAutor() {
         return idAutor;
     }
@@ -64,9 +68,25 @@ public class Autor {
     public void setBiografia(String biografia) {
         this.biografia = biografia;
     }
-    
+
     @Override
     public String toString() {
-        return "ID: " + idAutor + " | Nombre: " + nombreAutor + " " + apellidoAutor + " | Nacionalidad: " + nacionalidad;
+        return "ID: " + idAutor +
+               " | Nombre: " + nombreAutor + " " + apellidoAutor +
+               " | Nacionalidad: " + nacionalidad;
+    }
+
+    // Métodos compatibles con tu DAO
+
+    public void setId_autor(int idAutor) {
+        this.idAutor = idAutor;
+    }
+
+    public void setNombre_autor(String nombreAutor) {
+        this.nombreAutor = nombreAutor;
+    }
+
+    public void setApellido_autor(String apellidoAutor) {
+        this.apellidoAutor = apellidoAutor;
     }
 }
