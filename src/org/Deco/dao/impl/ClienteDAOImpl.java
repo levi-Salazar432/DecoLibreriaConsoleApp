@@ -84,6 +84,23 @@ public class ClienteDAOImpl implements ClienteDAO{
 
     @Override
     public boolean eliminar(long cui) {
-        return false; 
+     String consultaSQL = "{call sp_eliminarcliente(?)}";
+    try ( Connection conexion = Conexion.getInstancia().conectar();
+                     CallableStatement consultaCall = conexion.prepareCall(consultaSQL)
+         ){
+       consultaCall.setLong(1,cui); 
+       int filasAfectadas = consultaCall.executeUpdate(); 
+       if (filasAfectadas > 0) { 
+           System.out.println("Cliente eliminado con exito");
+           return true; 
+       } else {
+           System.out.println("No se encontro ningun cliente con ese ID");
+         return false;   
+       }
+       }catch (SQLException e) { 
+             System.out.println("Error al elminiar cliente " + e.getMessage());
+             return false; 
+       }
     }
 }
+

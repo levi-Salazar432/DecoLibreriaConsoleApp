@@ -31,11 +31,12 @@ public class ClienteController {
                   case 4:
                          break;
                   case 5:
+                         eliminar(); 
                          break;
                   case 6:
                         break;
              }
-         }while (opcion != 4); 
+         }while (opcion != 6); 
     }
     
     private void listar() {
@@ -50,6 +51,18 @@ public class ClienteController {
         }else {
             vista.mostrarMensaje("Cliente no encontrado con el ID: " + cui);
         }
-        
     }
+
+  private void eliminar() { 
+       Long cui = vista.solicitarCUI(); 
+       if (vista.confirmarAccion("¿Está seguro de que desea eliminar esta categoría? (s/n): ")) {
+           boolean eliminado = dao.eliminar(cui);
+           if (eliminado){
+               vista.mostrarMensaje("Categoria eliminada con exito");
+           }else { 
+               vista.mostrarMensaje("No se pudo eliminar la categoria. Verifique el ID");
+           }
+       }
+   }
+
 }

@@ -11,8 +11,8 @@ Scanner leer = new Scanner(System.in);
             System.out.println("1. Modulo Cliente");
             System.out.println("2. Modulo Autores");
             System.out.println("3. Modulo Categorias");
-            System.out.println("5. Modulo Editoriales");
-            System.out.println("4. Salir");
+            System.out.println("4. Modulo Editoriales");
+            System.out.println("5. Salir");
             opcion = Integer.parseInt(leer.nextLine());
             switch (opcion) {
                 case 1:
@@ -28,14 +28,14 @@ Scanner leer = new Scanner(System.in);
                     System.out.println("Categoria");
                     break;
                 case 4:
-                    System.out.println("Adios Vaquero!");
+                    System.out.println("Editoriales");
                     break;   
                 case 5:
-                    System.out.println("Editoriales");
+                    System.out.println("Adios Vaquero!");
                     break;
                 default:
                     System.out.println("NO existe esta opción");
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
 }

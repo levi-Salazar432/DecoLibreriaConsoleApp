@@ -17,7 +17,7 @@ public class ClienteConsoleView {
         System.out.println("3. buscar cliente por ID");
         System.out.println("4. modificar cliente");
         System.out.println("5. eliminar nuevo cliente");
-        System.out.println("6. regresdar a menu principal ");
+        System.out.println("6. regresar a menu principal ");
         System.out.println("Seleccione una opcion");
         opcion = Integer.parseInt(leer.nextLine()); 
         return opcion ; 
@@ -71,5 +71,10 @@ public class ClienteConsoleView {
    public void mostrarMensaje(String mensaje) { 
        System.out.println("mensaje");
    }
-    
+   
+   public boolean confirmarAccion(String mensaje) {
+        System.out.print(mensaje);
+        String respuesta = leer.nextLine(); 
+        return respuesta.equalsIgnoreCase("s");
+    }
 }
