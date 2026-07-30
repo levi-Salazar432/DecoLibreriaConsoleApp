@@ -27,6 +27,10 @@ public class Autor {
         this.apellidoAutor = apellidoAutor;
     }
 
+    public Autor(int aInt, String string, String string0, String string1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Getters y Setters
 
     public int getIdAutor() {
