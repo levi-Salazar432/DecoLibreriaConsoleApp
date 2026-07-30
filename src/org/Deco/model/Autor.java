@@ -1,4 +1,3 @@
-
 package org.Deco.model;
 
 public class Autor {
@@ -13,7 +12,7 @@ public class Autor {
     }
 
     public Autor(int idAutor, String nombreAutor, String apellidoAutor,
-                 String nacionalidad, String biografia) {
+                   String nacionalidad, String biografia) {
         this.idAutor = idAutor;
         this.nombreAutor = nombreAutor;
         this.apellidoAutor = apellidoAutor;
@@ -27,11 +26,12 @@ public class Autor {
         this.apellidoAutor = apellidoAutor;
     }
 
-    public Autor(int aInt, String string, String string0, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Autor(int idAutor, String nombreAutor, String apellidoAutor, String nacionalidad) {
+        this.idAutor = idAutor;
+        this.nombreAutor = nombreAutor;
+        this.apellidoAutor = apellidoAutor;
+        this.nacionalidad = nacionalidad;
     }
-
-    // Getters y Setters
 
     public int getIdAutor() {
         return idAutor;
@@ -73,6 +73,23 @@ public class Autor {
         this.biografia = biografia;
     }
 
+    // Métodos para compatibilidad con el controlador
+    public String getNombre() {
+        return nombreAutor;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombreAutor = nombre;
+    }
+
+    public String getApellido() {
+        return apellidoAutor;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellidoAutor = apellido;
+    }
+
     @Override
     public String toString() {
         return "ID: " + idAutor +
@@ -80,49 +97,4 @@ public class Autor {
                " | Nacionalidad: " + nacionalidad;
     }
 
-    // Métodos compatibles con tu DAO
-
-    public void setId_autor(int idAutor) {
-        this.idAutor = idAutor;
-    }
-
-    public void setNombre_autor(String nombreAutor) {
-        this.nombreAutor = nombreAutor;
-    }
-
-    public void setApellido_autor(String apellidoAutor) {
-        this.apellidoAutor = apellidoAutor;
-    }
-
-    public Object getCui() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public String getCorreoElectronico() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public String getApellido() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setCui(long parseLong) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setNombre(String trim) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setApellido(String trim) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setCorreoElectronico(String trim) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
