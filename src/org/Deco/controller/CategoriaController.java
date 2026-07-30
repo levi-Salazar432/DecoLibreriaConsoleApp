@@ -42,7 +42,7 @@ public class CategoriaController {
     } 
     
     private void listar(){ 
-        vista.mostrarListaCategoria(dao.ListarTodos());
+        vista.mostrarListaCategoria(dao.listartodos());
     }
 
     private void buscar() {
