@@ -1,26 +1,41 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package org.Deco.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import org.Deco.systen.Main;
 
-/**
- * FXML Controller class
- *
- * @author informatica
- */
-public class MenuPrincipalController implements Initializable {
+public class MenuPrincipalController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private void handleAutores() {
+        try {
+            Main.cambiarVista("/org/Deco/view/AutorView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de autores:\n" + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleNoDisponible() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Módulo no disponible");
+        alert.setHeaderText(null);
+        alert.setContentText("Este módulo aun no esta disponible.");
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleSalir() {
+        Platform.exit();
+    }
+
+    private void mostrarError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
 }
