@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
@@ -85,7 +84,30 @@ public class EditorialDAOImpl implements EditorialDAO{
 
     @Override
     public boolean eliminar(String nit) {
-        return false;
+        String consultaSQL = "{call sp_eliminar_editorial(?)}";
+        
+        try(
+            Connection conexion = Conexion.getInstancia().conectar();
+                CallableStatement consultaCall = conexion.prepareCall(consultaSQL)
+                ){
+            consultaCall.setString(1, nit);
+            
+            int filasAfectadas = consultaCall.executeUpdate();
+            
+            if (filasAfectadas > 0){
+                System.out.println("Editorial eliminada con exito");
+                return true;
+            }else {
+                System.out.println("No se encontro ninguna editorial con ese nit");
+                return false;
+            }
+            
+            }catch (SQLException e){
+                System.out.println("Error al elminar editorial" + e.getMessage());
+                return false;
+            }
+        
+ 
     }
     
 }

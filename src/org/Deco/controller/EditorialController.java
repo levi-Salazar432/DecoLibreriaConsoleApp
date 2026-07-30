@@ -66,4 +66,7 @@ public class EditorialController {
             vista.mostrarMensaje("Editorial no encontrado con el NIT:" + nit);
         }
     }
-}
+            
+        }
+    
+
