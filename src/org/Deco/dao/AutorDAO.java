@@ -12,5 +12,7 @@ public interface AutorDAO {
     boolean eliminar (int id_autor);
 
     public Autor buscarPorId(int id);
+
+    public boolean crear(Autor cliente);
     
 }

@@ -8,5 +8,9 @@ public class Main {
         MenuPrincipal menu = new MenuPrincipal();
         menu.iniciar(); 
     }
+
+    public static void cambiarVista(String orgDecoviewMenuPrincipalfxml) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

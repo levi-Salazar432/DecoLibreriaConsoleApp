@@ -15,11 +15,11 @@ public class AutorConsoleView {
         //todo el menu
         System.out.println("--- GESTION DE AUTORES ---");
         System.out.println("-1 CREAR nuevo Autor");
-        System.out.println("-2 LISTAR nuevo Autor");
-        System.out.println("-3 BUSCAR nuevo Autor");
-        System.out.println("-4 MODIFICAR nuevo Autor");
-        System.out.println("-5 ELIMINAR nuevo Autor");
-        System.out.println("-6 REGRESAR nuevo Autor");
+        System.out.println("-2 LISTAR los Autores");
+        System.out.println("-3 BUSCAR un Autor");
+        System.out.println("-4 MODIFICAR un Autor");
+        System.out.println("-5 ELIMINAR un Autor");
+        System.out.println("-6 REGRESAR AL MENU PRINCIPAL");
         System.out.println(" SLECCIONE UNA OPCION ---->");
         opcion = Integer.parseInt(leer.nextLine());
 
