@@ -34,12 +34,4 @@ public class Conexion {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    public CallableStatement prepareCall() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public CallableStatement prepareCall(String consulta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }
