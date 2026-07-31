@@ -31,6 +31,7 @@ public class Autor {
         this.nombreAutor = nombreAutor;
         this.apellidoAutor = apellidoAutor;
         this.nacionalidad = nacionalidad;
+        this.biografia = biografia;
     }
 
     public int getIdAutor() {

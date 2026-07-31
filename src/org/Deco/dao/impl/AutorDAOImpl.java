@@ -24,7 +24,8 @@ public class AutorDAOImpl implements AutorDAO {
                         tablaResultado.getInt("id_autor"),
                         tablaResultado.getString("nombre_autor"),
                         tablaResultado.getString("apellido_autor"),
-                        tablaResultado.getString("nacionalidad")
+                        tablaResultado.getString("nacionalidad"),
+                        tablaResultado.getString("biografia")
                 ));
             }
         } catch (SQLException e) {
@@ -38,10 +39,10 @@ public class AutorDAOImpl implements AutorDAO {
         String consulta = "{call sp_insertarautor(?, ?, ?, ?)}";
         try (Connection conexion = Conexion.getInstancia().conectar();
              CallableStatement consultaCall = conexion.prepareCall(consulta)) {
-            consultaCall.setInt(1, autor.getIdAutor());
-            consultaCall.setString(2, autor.getNombre());
-            consultaCall.setString(3, autor.getApellido());
-            consultaCall.setString(4, autor.getNacionalidad());
+            consultaCall.setString(1, autor.getNombre());
+            consultaCall.setString(2, autor.getApellido());
+            consultaCall.setString(3, autor.getNacionalidad());
+            consultaCall.setString(4, autor.getBiografia());
             return consultaCall.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.print("Error al crear Autor: " + e.getMessage());
@@ -62,6 +63,7 @@ public class AutorDAOImpl implements AutorDAO {
                 autor.setNombre(tablaResultado.getString("nombre_autor"));
                 autor.setApellido(tablaResultado.getString("apellido_autor"));
                 autor.setNacionalidad(tablaResultado.getString("nacionalidad"));
+                autor.setBiografia(tablaResultado.getString("biografia"));
             } else {
                 return null;
             }

@@ -26,6 +26,8 @@ public class AutorFXController implements Initializable {
     @FXML
     private TextField txtNacionalidad;
     @FXML
+    private TextField txtBiografia;
+    @FXML
     private Label lblMensaje;
     @FXML
     private TableView<Autor> tablaAutores; // Tabla de entidad: autor
@@ -70,6 +72,7 @@ public class AutorFXController implements Initializable {
             autor.setNombre(txtNombre.getText().trim());
             autor.setApellido(txtApellido.getText().trim());
             autor.setNacionalidad(txtNacionalidad.getText().trim());
+            autor.setBiografia(txtBiografia.getText().trim());
 
             if (autorDAO.crear(autor)) {
                 lblMensaje.setText("Autor registrado exitosamente.");
