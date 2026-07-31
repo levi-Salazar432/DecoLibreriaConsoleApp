@@ -1,5 +1,5 @@
 package org.Deco.controller;
-
+ 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -14,10 +14,10 @@ import org.Deco.dao.CategoriaDAO;
 import org.Deco.dao.impl.CategoriaDAOImpl;
 import org.Deco.model.Categoria;
 import org.Deco.systen.Main;
-
+ 
 public class CategoriaFXController implements Initializable {
-
-
+ 
+ 
     @FXML 
     private TextField txtidCategoria; 
     @FXML 
@@ -26,25 +26,19 @@ public class CategoriaFXController implements Initializable {
     private TableView<Categoria> tablaCategoria; 
     @FXML
     private Label lblMensaje;
-    
- 
+
     private final CategoriaDAO categoriaDAO = new CategoriaDAOImpl();
     private final ObservableList<Categoria> listaCategoria = FXCollections.observableArrayList(); 
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarTabla();
         seleccionarFila();
     }
-    
     private void cargarTabla() {
-        
         listaCategoria.setAll(categoriaDAO.listartodos());
-       
         tablaCategoria.setItems(listaCategoria);
     }   
-    
     private void seleccionarFila() {
        tablaCategoria.getSelectionModel().selectedItemProperty().addListener(
                (obs,oldSelection,newSelection) -> {
@@ -56,20 +50,16 @@ public class CategoriaFXController implements Initializable {
     }
      @FXML
     private void handleGuardar() {
-            if (txtidCategoria.getText().isEmpty() || txtnombreCategoria.getText().isEmpty()) { // <- Falta este paréntesis
+            if ( txtnombreCategoria.getText().isEmpty()) { 
             mostrarError("Todos los campos son obligatorios.");
             return;
 }
-            
     Categoria categoria = new Categoria();
-    categoria.setIdCategoria(Integer.parseInt(txtidCategoria.getText().trim()));
     categoria.setNombreCategoria(txtnombreCategoria.getText().trim()); 
-    
          if (categoriaDAO.crear(categoria)) {
              lblMensaje.setText("Categoria registrado con exito");       
-             cargarTabla();
-             limpiarFormulario();
-             
+//             cargarTabla();
+//             limpiarFormulario();
          }else{
              mostrarError("No se puede registrar la cateogira");
          }
@@ -79,7 +69,6 @@ public class CategoriaFXController implements Initializable {
         limpiarFormulario();
         lblMensaje.setText("");
     }
-    
      @FXML
     private void handleActualizar() {
         cargarTabla();
@@ -88,18 +77,16 @@ public class CategoriaFXController implements Initializable {
        @FXML
     private void handleVolver() {
         try {
-            Main.cambiarVista("/org/Deco/View/MenuPrincipal.fxml");
+            Main.cambiarVista("/org/Deco/view/MenuPrincipalView.fxml");
         } catch (Exception e) {
             mostrarError("Error al volver al menú: " + e.getMessage());
         }
     }
-    
     private void limpiarFormulario() {
         txtidCategoria.clear();
         txtnombreCategoria.clear();
     }
-  
-    
+
     private void mostrarError(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

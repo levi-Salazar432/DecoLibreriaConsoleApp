@@ -1,31 +1,28 @@
 package org.Deco.dao.impl;
-
+ 
 import org.Deco.util.Conexion; 
 import org.Deco.model.Categoria;
 import org.Deco.dao.CategoriaDAO;
-
+ 
 import java.util.List; 
 import java.sql.CallableStatement; 
 import java.util.ArrayList; 
 import java.sql.Connection;
 import java.sql.SQLException; 
 import java.sql.ResultSet;
-
+ 
 public class CategoriaDAOImpl implements CategoriaDAO {
-    
         @Override
         public List<Categoria> listartodos() { 
         List<Categoria> categoria = new ArrayList<>();
-        String consulta = "{ call sp_listar_categoria()}";
-        
+        String consulta = "{ call sp_listarcategorias()}";
         try (Connection conexion = Conexion.getInstancia().conectar();
              CallableStatement consultaCall = conexion.prepareCall(consulta);
              ResultSet tablaResultado = consultaCall.executeQuery()) {
-             
             while (tablaResultado.next()) {
                 categoria.add(new Categoria(
-                    tablaResultado.getInt("ID"),
-                    tablaResultado.getString("CATEGORIA")          
+                    tablaResultado.getInt("id_categoria"),
+                    tablaResultado.getString("nombre_categoria")          
                 ));
             }
         } catch (SQLException e) {    
@@ -33,37 +30,29 @@ public class CategoriaDAOImpl implements CategoriaDAO {
         }           
         return categoria; 
     }
-
+ 
     @Override
     public boolean crear(Categoria categoria) {
-        String consultaSQL = "{ call sp_registrar_categoria(?, ?) }"; // Ajusta el nombre de tu SP si es diferente
-        
+        String consultaSQL = "{ call sp_insertarcategoria(?) }"; 
         try (Connection conexion = Conexion.getInstancia().conectar();
              CallableStatement consultaCall = conexion.prepareCall(consultaSQL)) {
-             
-            consultaCall.setInt(1, categoria.getIdCategoria());
-            consultaCall.setString(2, categoria.getNombreCategoria());
-            
+            consultaCall.setString(1, categoria.getNombreCategoria());
             int filasAfectadas = consultaCall.executeUpdate();
             return filasAfectadas > 0;
-            
         } catch (SQLException e) {
             System.err.println("Error al crear categoría: " + e.getMessage());
             return false;
         }
     }
-
+ 
     @Override
     public Categoria buscarPorId(int idCategoria) {
         Categoria categoria = new Categoria();
         String consultaSQL = "{Call sp_buscar_categorias(?)}"; 
-        
         try (Connection conexion = Conexion.getInstancia().conectar();
              CallableStatement consultaCall = conexion.prepareCall(consultaSQL)) {
-             
             consultaCall.setInt(1, idCategoria);
             ResultSet tablaResultado = consultaCall.executeQuery();
-            
             if (tablaResultado.next()) {
                 categoria.setIdCategoria(tablaResultado.getInt("ID"));
                 categoria.setNombreCategoria(tablaResultado.getString("CATEGORIA"));
@@ -77,22 +66,18 @@ public class CategoriaDAOImpl implements CategoriaDAO {
         }                                
         return null; 
     }
-       
     @Override
     public boolean actualizar(Categoria categoria) {
         return false; 
     }
-
+ 
     @Override
     public boolean eliminar(int idCategoria) {
-        String consultaSQL = "{Call sp_eliminar_categoria(?)}";
-        
+        String consultaSQL = "{Call sp_eliminar_categoria()}";
         try (Connection conexion = Conexion.getInstancia().conectar();
              CallableStatement consultaCall = conexion.prepareCall(consultaSQL)) {
-             
             consultaCall.setInt(1, idCategoria); 
             int filasAfectadas = consultaCall.executeUpdate(); 
-            
             if (filasAfectadas > 0) { 
                 System.out.println("Categoria eliminada con exito");
                 return true; 
