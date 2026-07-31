@@ -74,12 +74,13 @@ public class CategoriaFXController implements Initializable {
         cargarTabla();
         lblMensaje.setText("Tabla actualizada.");
     }
-       @FXML
+    
+    @FXML
     private void handleVolver() {
         try {
-            Main.cambiarVista("/org/Deco/view/MenuPrincipalView.fxml");
-        } catch (Exception e) {
-            mostrarError("Error al volver al menú: " + e.getMessage());
+           Main.cambiarVista("/org/Deco/view/MenuPrincipalView.fxml");
+       } catch (Exception e) {
+         mostrarError("Error al volver al menú: " + e.getMessage());
         }
     }
     private void limpiarFormulario() {

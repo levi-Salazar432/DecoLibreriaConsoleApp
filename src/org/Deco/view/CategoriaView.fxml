@@ -11,7 +11,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.CategoriaFXController">
+<BorderPane xmlns="http://javafx.com/javafx/21.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.Deco.controller.CategoriaFXController"
+            stylesheets="@CategoriaView.css">
 <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
  
     <left>
