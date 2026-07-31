@@ -54,17 +54,17 @@ public class InicioSesionController implements Initializable {
         String tituloDashboard = "";
         switch (usuario.getRol().toLowerCase()) {
             case "admin":
-                rutaFXML = "/org/diegoraguay/view/AdminDashboardView.fxml";
+                rutaFXML = "/org/Deco/view/MenuPrincipalDashboardView.fxml";
                 tituloDashboard = "Panel de Administracion";
                 break;
-            case "empleado":
-                rutaFXML = "/org/diegoraguay/view/EmpleadoDashboardView.fxml";
+            /*case "empleado":
+                rutaFXML = "/org/Deco/view/MenuPrincipalDashboardView.fxml";
                 tituloDashboard = "Panel de Empleado";
                 break;
             case "cajero":
-                rutaFXML = "/org/diegoraguay/view/CajeroDashboardView.fxml";
+                rutaFXML = "/org/Deco/view/MenuPrincipalDashboardView.fxml";
                 tituloDashboard = "Panel de Cajero";
-                break;
+                break;*/
         }
         try {
             FXMLLoader cargadorFXML = new FXMLLoader(getClass().getResource(rutaFXML));
