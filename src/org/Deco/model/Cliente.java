@@ -1,45 +1,64 @@
 package org.Deco.model;
 
+//POJO: Nombre, atributos, constructores, getters y setters
 public class Cliente {
-    private Long cui;
-    private String nombreCliente;
-    private String apellidoCliente;
-    private String correoElectronico;
 
+    /*
+    create table clientes(
+        cui bigint primary key,
+        nombre_cliente varchar(100),
+        apellido_cliente varchar(100),
+        correo_electronico varchar(100)
+    );
+     */
+
+    //atributos de clase
+    long cui;
+    String nombre;
+    String apellido;
+    String correoElectronico;
+
+    //constructores: asignación de datos, instanciar objetos
+    //vacio
     public Cliente() {
     }
-
-    public Cliente(Long cui, String nombreCliente, String apellidoCliente, String correoElectronico) {
+    //lleno o con parametros
+    public Cliente(long cui, String nombre, String apellido, String correoElectronico) {
         this.cui = cui;
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.correoElectronico = correoElectronico;
     }
+    //personalizador
+    
+    
+    //getter and setters
 
-    public Long getCui() {
+    public long getCui() {
         return cui;
     }
 
-    public void setCui(Long cui) {
+    public void setCui(long cui) {
         this.cui = cui;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public String getNombre() {        
+        return nombre;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        String nombreClienteMayuscula = nombreCliente.toUpperCase();
-        this.nombreCliente = nombreCliente;
+    public void setNombre(String nombre) {
+        //formatear a Mayusucual
+        String nombreMayusculas = nombre.toUpperCase();
+        //formatear a Inicia con Mayusuculas
+        this.nombre = nombreMayusculas;
     }
 
-    public String getApellidoCliente() {
-        return apellidoCliente;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoCliente(String apellidoCliente) {
-        String nombreClienteMayuscula = nombreCliente.toUpperCase();
-        this.apellidoCliente = apellidoCliente;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreoElectronico() {
@@ -48,5 +67,7 @@ public class Cliente {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
-    }    
+    }
+    
+    
 }
