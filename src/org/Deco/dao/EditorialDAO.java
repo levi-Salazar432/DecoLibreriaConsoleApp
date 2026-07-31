@@ -1,15 +1,17 @@
-
 package org.Deco.dao;
 
 import java.util.List;
 import org.Deco.model.Editorial;
 
 public interface EditorialDAO {
-    //firmas de metodos
-    //CRUD
-    boolean insertar(Editorial editorial);
-    List<Editorial> ListarTodos ();
+
+    List<Editorial> ListarTodos();
+
+    boolean crear(Editorial editorial);
+
     Editorial buscarPorId(String nit);
+
     boolean actualizar(Editorial editorial);
+
     boolean eliminar(String nit);
 }
