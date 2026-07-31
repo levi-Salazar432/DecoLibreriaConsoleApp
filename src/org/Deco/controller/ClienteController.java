@@ -1,68 +1,124 @@
 package org.Deco.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import org.Deco.dao.ClienteDAO;
 import org.Deco.dao.impl.ClienteDAOImpl;
 import org.Deco.model.Cliente;
-import org.Deco.view.ClienteConsoleView;
+import org.Deco.systen.Main;
 
-public class ClienteController {
-    
-    private final ClienteDAO dao; 
-    private final ClienteConsoleView vista; 
-    
-    public ClienteController(ClienteConsoleView vista) { 
-        this.dao = new ClienteDAOImpl(); 
-        this.vista = vista; 
-    }
-    
-    public void iniciar() {
-        int opcion; 
-        do {
-             opcion = vista.mostrarMenu();
-             switch (opcion) {
-                  case 1:
-                          break;
-                  case 2:
-                         listar(); 
-                         break; 
-                  case 3:
-                         buscar(); 
-                         break;
-                  case 4:
-                         break;
-                  case 5:
-                         eliminar(); 
-                         break;
-                  case 6:
-                        break;
-             }
-         }while (opcion != 6); 
-    }
-    
-    private void listar() {
-        vista.mostrarListaClientes(dao.listarTodos()); 
+public class ClienteController implements Initializable {
+
+    @FXML
+    private TextField txtCui;
+    @FXML
+    private TextField txtNombre;
+    @FXML
+    private TextField txtApellido;
+    @FXML
+    private TextField txtCorreo;
+    @FXML
+    private Label lblMensaje;
+    @FXML
+    private TableView<Cliente> tablaClientes;//Tabla de entidad: cliente
+
+    private final ClienteDAO clienteDAO = new ClienteDAOImpl();
+    private final ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();//Entidad:Cliente
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cargarTabla();
+        seleccionarFila();
     }
 
-    private void buscar() {
-        Long cui = vista.solicitarCUI(); 
-        Cliente cliente = dao.buscar(cui); 
-        if (cliente != null) { 
-            vista.mostrarCliente(cliente);
-        }else {
-            vista.mostrarMensaje("Cliente no encontrado con el ID: " + cui);
+    private void cargarTabla() {
+        listaClientes.setAll(clienteDAO.listarTodos());
+        tablaClientes.setItems(listaClientes);
+    }
+
+    private void seleccionarFila() {
+        tablaClientes.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldSelection, newSelection) -> {
+                    if (newSelection != null) {
+                        txtCui.setText(String.valueOf(newSelection.getCui()));
+                        txtNombre.setText(newSelection.getNombre());
+                        txtApellido.setText(newSelection.getApellido());
+                        txtCorreo.setText(newSelection.getCorreoElectronico());
+                    }
+                });
+    }
+
+    @FXML
+    private void handleGuardar() {
+        try {
+            if (txtCui.getText().isEmpty() || txtNombre.getText().isEmpty()
+                    || txtApellido.getText().isEmpty() || txtCorreo.getText().isEmpty()) {
+                mostrarError("Todos los campos son obligatorios.");
+                return;
+            }
+
+            Cliente cliente = new Cliente();
+            cliente.setCui(Long.parseLong(txtCui.getText().trim()));
+            cliente.setNombre(txtNombre.getText().trim());
+            cliente.setApellido(txtApellido.getText().trim());
+            cliente.setCorreoElectronico(txtCorreo.getText().trim());
+
+            if (clienteDAO.crear(cliente)) {
+                lblMensaje.setText("Cliente registrado exitosamente.");
+                cargarTabla();
+                limpiarFormulario();
+            } else {
+                mostrarError("No se pudo registrar el cliente.");
+            }
+        } catch (NumberFormatException e) {
+            mostrarError("El CUI debe ser un número válido.");
+        } catch (Exception e) {
+            mostrarError("Error al guardar: " + e.getMessage());
         }
     }
 
-  private void eliminar() { 
-       Long cui = vista.solicitarCUI(); 
-       if (vista.confirmarAccion("¿Está seguro de que desea eliminar esta categoría? (s/n): ")) {
-           boolean eliminado = dao.eliminar(cui);
-           if (eliminado){
-               vista.mostrarMensaje("Categoria eliminada con exito");
-           }else { 
-               vista.mostrarMensaje("No se pudo eliminar la categoria. Verifique el ID");
-           }
-       }
-   }
+    @FXML
+    private void handleLimpiar() {
+        limpiarFormulario();
+        lblMensaje.setText("");
+    }
+
+    @FXML
+    private void handleActualizar() {
+        cargarTabla();
+        lblMensaje.setText("Tabla actualizada.");
+    }
+
+    @FXML
+    private void handleVolver() {
+        try {
+            Main.cambiarVista("/org/key/view/MenuPrincipal.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al volver al menú: " + e.getMessage());
+        }
+    }
+
+    private void limpiarFormulario() {
+        txtCui.clear();
+        txtNombre.clear();
+        txtApellido.clear();
+        txtCorreo.clear();
+    }
+
+    private void mostrarError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
 
 }
