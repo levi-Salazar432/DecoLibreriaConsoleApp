@@ -1,18 +1,13 @@
 package org.Deco.util;
-
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest; 
-import java.security.NoSuchAlgorithmException; 
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 public class SecurityUtil {
-    
     public static String hashSHA256Password(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-
             StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
-
             for (byte b : encodedHash) {
                 String hex = Integer.toHexString(0xff & b);
                 if (hex.length() == 1) {
@@ -20,12 +15,9 @@ public class SecurityUtil {
                 }
                 hexString.append(hex);
             }
-
             return hexString.toString();
-
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Error al encriptar la contraseña", e);
         }
     }
-    
 }

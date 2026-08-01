@@ -21,8 +21,15 @@ public class Main extends Application {
     }
 
     public static void cambiarVista(String fxmlPath) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlPath));
+        java.net.URL url = Main.class.getResource(fxmlPath);
+        if (url == null) {
+            throw new Exception("No se encontró el archivo FXML en la ruta: " + fxmlPath);
+        }
+        FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
+        if (escenarioPrincipal == null) {
+            throw new Exception("El escenarioPrincipal no ha sido inicializado.");
+        }
         escenarioPrincipal.setScene(new Scene(root));
     }
 
