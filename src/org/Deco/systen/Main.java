@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage escenarioPrincipal) throws Exception {
         Main.escenarioPrincipal = escenarioPrincipal;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/Deco/view/MenuPrincipal.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/Deco/view/InicioSesionView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         escenarioPrincipal.setTitle("Deco Librería");

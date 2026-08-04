@@ -25,6 +25,15 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
     }
     
     @FXML
+    private void handleCategorias() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/CategoriaView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de categorías:\n" + e.getMessage());
+        }
+    }
+
+    @FXML
     private void handleNoDisponible() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Módulo no disponible");
