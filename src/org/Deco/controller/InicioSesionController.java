@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.Deco.dao.UsuarioDao;
 import org.Deco.util.SecurityUtil;
 import org.Deco.model.Usuario;
+import org.Deco.systen.Main;
 
 public class InicioSesionController implements Initializable {
     @FXML private TextField txtUsuario;
@@ -49,7 +50,7 @@ public class InicioSesionController implements Initializable {
         }
     }
 
-    private void abrirDashBoard(Usuario usuario) {
+     private void abrirDashBoard(Usuario usuario) {
         String rutaFXML = "";
         String tituloDashboard = "";
         switch (usuario.getRol().toLowerCase()) {
@@ -71,15 +72,13 @@ public class InicioSesionController implements Initializable {
             Parent raiz = cargadorFXML.load();
             DashboardController controlado = cargadorFXML.getController();
             controlado.iniciarUsuario(usuario);
-            Stage escenario = new Stage();
+            Stage escenario = Main.getEscenarioPrincipal();
             escenario.setScene(new Scene(raiz));
             escenario.setTitle(tituloDashboard);
             escenario.show();
-            Stage escenaActual = (Stage) btnIniciarSesion.getScene().getWindow();
-            escenaActual.close();
         } catch (IOException e) {
             System.err.println("Error al cargar la vista:" + rutaFXML+ e.getMessage());
             lblMensaje.setText("Error interno");
         }
-    }
+    }    
 }

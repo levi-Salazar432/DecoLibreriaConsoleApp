@@ -20,7 +20,7 @@ public class Main extends Application {
         escenarioPrincipal.show();
     }
 
-    public static void cambiarVista(String fxmlPath) throws Exception {
+     public static void cambiarVista(String fxmlPath) throws Exception {
         java.net.URL url = Main.class.getResource(fxmlPath);
         if (url == null) {
             throw new Exception("No se encontró el archivo FXML en la ruta: " + fxmlPath);
@@ -31,6 +31,10 @@ public class Main extends Application {
             throw new Exception("El escenarioPrincipal no ha sido inicializado.");
         }
         escenarioPrincipal.setScene(new Scene(root));
+    }
+
+    public static Stage getEscenarioPrincipal() {
+        return escenarioPrincipal;
     }
 
     public static void main(String[] args) {

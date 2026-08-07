@@ -34,6 +34,15 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
     }
 
     @FXML
+    private void handleEditoriales() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/EditorialView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de editoriales:\n" + e.getMessage());
+        }
+    }
+
+    @FXML
     private void handleNoDisponible() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Módulo no disponible");
