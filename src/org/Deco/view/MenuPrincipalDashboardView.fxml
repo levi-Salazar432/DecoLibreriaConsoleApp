@@ -15,7 +15,7 @@
     <center>
         <VBox spacing="15" alignment="CENTER">
             <padding><Insets top="30" right="40" bottom="30" left="40" /></padding>
-            <Button text="Clientes" prefWidth="220" prefHeight="40" onAction="#handleNoDisponible" />
+            <Button text="Clientes" prefWidth="220" prefHeight="40" onAction="#handleClientes" />
             <Button text="Autores" prefWidth="220" prefHeight="40" onAction="#handleNoDisponible" />
             <Button text="Categorías" prefWidth="220" prefHeight="40" onAction="#handleCategorias" />
             <Button text="Editoriales" prefWidth="220" prefHeight="40" onAction="#handleEditoriales" />

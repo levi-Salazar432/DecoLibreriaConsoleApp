@@ -100,7 +100,7 @@ public class ClienteController implements Initializable {
     @FXML
     private void handleVolver() {
         try {
-            Main.cambiarVista("/org/Deco/view/MenuPrincipal.fxml");
+            Main.cambiarVista("/org/Deco/view/MenuPrincipalDashboardView.fxml");
         } catch (Exception e) {
             mostrarError("Error al volver al menú: " + e.getMessage());
         }

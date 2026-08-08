@@ -41,6 +41,15 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
             mostrarError("Error al cargar la vista de editoriales:\n" + e.getMessage());
         }
     }
+    
+    @FXML
+    private void handleClientes() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/ClienteView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de clientes:\n" + e.getMessage());
+        }
+    }
 
     @FXML
     private void handleNoDisponible() {
