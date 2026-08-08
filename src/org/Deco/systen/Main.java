@@ -1,14 +1,11 @@
 package org.Deco.systen;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 public class Main extends Application {
     private static Stage escenarioPrincipal;
-
     @Override
     public void start(Stage escenarioPrincipal) throws Exception {
         Main.escenarioPrincipal = escenarioPrincipal;
@@ -19,7 +16,6 @@ public class Main extends Application {
         escenarioPrincipal.setScene(scene);
         escenarioPrincipal.show();
     }
-
      public static void cambiarVista(String fxmlPath) throws Exception {
         java.net.URL url = Main.class.getResource(fxmlPath);
         if (url == null) {
@@ -32,11 +28,9 @@ public class Main extends Application {
         }
         escenarioPrincipal.setScene(new Scene(root));
     }
-
     public static Stage getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
-
     public static void main(String[] args) {
         launch(args);
     }
