@@ -52,6 +52,15 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
     }
 
     @FXML
+    private void handleAutores() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/AutorView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de autores:\n" + e.getMessage());
+        }
+    }
+
+    @FXML
     private void handleNoDisponible() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Módulo no disponible");
