@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -36,31 +35,16 @@
             <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Lista de Autores" />
             <TableView fx:id="tablaAutores">
                 <columns>
-                    <TableColumn prefWidth="120" text="ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="idAutor" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="140" text="Nombre">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="nombreAutor" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="140" text="Apellido">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="apellidoAutor" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="200" text="Nacionalidad">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="nacionalidad" />
-                        </cellValueFactory>
-                    </TableColumn>
-               <TableColumn prefWidth="200" text="Biografia">
-                  <cellValueFactory>
-                     <PropertyValueFactory property="biografia" />
-                  </cellValueFactory>
-               </TableColumn>
+                    <TableColumn fx:id="colID" prefWidth="120" text="ID" />
+                        
+                    <TableColumn fx:id="colNombre" prefWidth="140" text="Nombre" />
+                        
+                    <TableColumn fx:id="colApellido" prefWidth="140" text="Apellido" />
+                        
+                    <TableColumn fx:id="colNacionalidad" prefWidth="200" text="Nacionalidad" />
+                        
+               <TableColumn fx:id="colBiografia" prefWidth="200" text="Biografia" />
+                  
                 </columns>
             </TableView>
             <HBox spacing="10">
