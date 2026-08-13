@@ -10,39 +10,96 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.ClienteController">
-    <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
-
+<BorderPane
+    xmlns="http://javafx.com/javafx/21.0.1"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="org.Deco.controller.ClienteController"
+    styleClass="cliente-root"
+    stylesheets="@style/clienteview.css">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
     <left>
-        <VBox maxWidth="300" minWidth="300" spacing="10">
-            <padding><Insets right="20" /></padding>
-            <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Registrar Cliente" />
-            <TextField fx:id="txtCui" promptText="CUI" />
-            <TextField fx:id="txtNombre" promptText="Nombre" />
-            <TextField fx:id="txtApellido" promptText="Apellido" />
-            <TextField fx:id="txtCorreo" promptText="Correo Electrónico" />
+        <VBox
+            maxWidth="300"
+            minWidth="300"
+            spacing="10"
+            styleClass="form-container">
+            <padding>
+                <Insets right="20" />
+            </padding>
+            <Label
+                styleClass="section-title"
+                text="Registrar Cliente" />
+            <TextField
+                fx:id="txtCui"
+                promptText="CUI"
+                styleClass="form-text" />
+            <TextField
+                fx:id="txtNombre"
+                promptText="Nombre"
+                styleClass="form-text" />
+            <TextField
+                fx:id="txtApellido"
+                promptText="Apellido"
+                styleClass="form-text" />
+            <TextField
+                fx:id="txtCorreo"
+                promptText="Correo Electrónico"
+                styleClass="form-text" />
             <HBox spacing="10">
-                <Button onAction="#handleGuardar" prefWidth="120" text="Guardar" />
-                <Button onAction="#handleLimpiar" prefWidth="120" text="Limpiar" />
+                <Button
+                    onAction="#handleGuardar"
+                    prefWidth="120"
+                    text="Guardar"
+                    styleClass="primary-button" />
+                <Button
+                    onAction="#handleLimpiar"
+                    prefWidth="120"
+                    text="Limpiar"
+                    styleClass="primary-button" />
             </HBox>
-            <Label fx:id="lblMensaje" />
+            <Label
+                fx:id="lblMensaje"
+                styleClass="message-label" />
         </VBox>
     </left>
-
     <center>
         <VBox spacing="10">
-            <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Lista de Clientes" />
-            <TableView fx:id="tablaClientes">
+            <Label
+                styleClass="section-title"
+                text="Lista de Clientes" />
+            <TableView
+                fx:id="tablaClientes"
+                styleClass="client-table">
                 <columns>
-                    <TableColumn fx:id="colCui" prefWidth="120" text="CUI" />
-                    <TableColumn fx:id="colNombre" prefWidth="140" text="Nombre" />    
-                    <TableColumn fx:id="colApellido" prefWidth="140" text="Apellido" />
-                    <TableColumn fx:id="colCorreo" prefWidth="200" text="Correo Electrónico" />
+                    <TableColumn
+                        fx:id="colCui"
+                        prefWidth="120"
+                        text="CUI" />
+                    <TableColumn
+                        fx:id="colNombre"
+                        prefWidth="140"
+                        text="Nombre" />
+                    <TableColumn
+                        fx:id="colApellido"
+                        prefWidth="140"
+                        text="Apellido" />
+                    <TableColumn
+                        fx:id="colCorreo"
+                        prefWidth="200"
+                        text="Correo Electrónico" />
                 </columns>
             </TableView>
             <HBox spacing="10">
-                <Button onAction="#handleActualizar" text="Actualizar Tabla" />
-                <Button onAction="#handleVolver" text="Volver al Menú" />
+                <Button
+                    onAction="#handleActualizar"
+                    text="Actualizar Tabla"
+                    styleClass="table-button" />
+                <Button
+                    onAction="#handleVolver"
+                    text="Volver al Menú"
+                    styleClass="table-button" />
             </HBox>
         </VBox>
     </center>
