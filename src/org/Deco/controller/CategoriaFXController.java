@@ -8,13 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.Deco.dao.CategoriaDAO;
 import org.Deco.dao.impl.CategoriaDAOImpl;
 import org.Deco.model.Categoria;
 import org.Deco.systen.Main;
- 
+import javafx.scene.control.cell.PropertyValueFactory;
 public class CategoriaFXController implements Initializable {
  
  
@@ -27,6 +29,11 @@ public class CategoriaFXController implements Initializable {
     @FXML
     private Label lblMensaje;
 
+    // colId, colNombre
+    @FXML TableColumn colId;
+    @FXML TableColumn colNombre;
+    
+    
     private final CategoriaDAO categoriaDAO = new CategoriaDAOImpl();
     private final ObservableList<Categoria> listaCategoria = FXCollections.observableArrayList(); 
 
@@ -34,7 +41,16 @@ public class CategoriaFXController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         cargarTabla();
         seleccionarFila();
+        configurarTabla();
     }
+    
+    private void configurarTabla() {
+        //CellValueFactoy. PropertyValueFactory
+        //Valor de fabrica de celda, propiedad de fabrica de celda
+        colId.setCellValueFactory(new PropertyValueFactory<Categoria, Integer>("idCategoria"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<Categoria, String>("nombreCategoria"));
+    }
+    
     private void cargarTabla() {
         listaCategoria.setAll(categoriaDAO.listartodos());
         tablaCategoria.setItems(listaCategoria);
@@ -95,6 +111,8 @@ public class CategoriaFXController implements Initializable {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
+    
 }
    
     
