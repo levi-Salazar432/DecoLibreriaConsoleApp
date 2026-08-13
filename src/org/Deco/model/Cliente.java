@@ -48,9 +48,9 @@ public class Cliente {
 
     public void setNombre(String nombre) {
         //formatear a Mayusucual
-        String nombreMayusculas = nombre.toUpperCase();
+        //String nombreMayusculas = nombre.toUpperCase();
         //formatear a Inicia con Mayusuculas
-        this.nombre = nombreMayusculas;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
