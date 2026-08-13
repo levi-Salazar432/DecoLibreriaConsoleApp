@@ -8,8 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.Deco.dao.AutorDAO;
 import org.Deco.dao.impl.AutorDAOImpl;
 import org.Deco.model.Autor;
@@ -32,6 +34,14 @@ public class AutorFXController implements Initializable {
     @FXML
     private TableView<Autor> tablaAutores; // Tabla de entidad: autor
 
+    //colID, colNombre, colApellido, colNacionalidad, colBiografia
+    
+    @FXML TableColumn colID;
+    @FXML TableColumn colNombre;
+    @FXML TableColumn colApellido;
+    @FXML TableColumn colNacionalidad;
+    @FXML TableColumn colBiografia;
+    
     private final AutorDAO autorDAO = new AutorDAOImpl();
     private final ObservableList<Autor> listaAutores = FXCollections.observableArrayList(); // Entidad: Autor
 
@@ -39,6 +49,7 @@ public class AutorFXController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         cargarTabla();
         seleccionarFila();
+        configurarTabla();
     }
 
     private void cargarTabla() {
@@ -122,6 +133,16 @@ public class AutorFXController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    private void configurarTabla() {
+        //CellValueFactory, PropetyValueFactory
+        //Valor de fabrica de celda, pripiedad de fabrica de celda
+        colID.setCellValueFactory(new PropertyValueFactory<Autor, Integer>("idAutor"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<Autor, String>("nombreAutor"));
+        colApellido.setCellValueFactory(new PropertyValueFactory<Autor, String>("apellidoAutor"));
+        colNacionalidad.setCellValueFactory(new PropertyValueFactory<Autor, String>("nacionalidad"));
+        colBiografia.setCellValueFactory(new PropertyValueFactory<Autor, String>("biografia"));
     }
 
 }
