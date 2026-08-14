@@ -1,7 +1,48 @@
-/*
- * Empty Stylesheet file.
- */
-
 .mainFxmlClass {
+    -fx-background-color: #3E3E3E;
+}
 
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.title-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #012138;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.password-field {
+    -fx-background-color: white;
+    -fx-border-color: #012138;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.button {
+    -fx-background-color: #012138;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3E3E3E;
+}
+
+#lblMensaje {
+    -fx-text-fill: #FF6B6B;
+    -fx-font-weight: bold;
 }

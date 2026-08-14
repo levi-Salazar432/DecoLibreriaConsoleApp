@@ -1,7 +1,38 @@
-/*
- * Empty Stylesheet file.
- */
-
 .mainFxmlClass {
+    -fx-background-color: #3E3E3E;
+}
 
+.title-label {
+    -fx-background-color: #012138;
+    -fx-text-fill: white;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.menu-container {
+    -fx-background-color: #3E3E3E;
+}
+
+.menu-button {
+    -fx-background-color: #012138;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #3E3E3E;
+}
+
+.exit-button {
+    -fx-background-color: #012138;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.exit-button:hover {
+    -fx-background-color: #3E3E3E;
 }
