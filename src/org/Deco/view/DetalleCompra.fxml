@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="604.0" styleClass="editorial-root" stylesheets="@editorialview.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.DetalleCompraFXController">
+
+    <center>
+        <VBox prefHeight="400.0" prefWidth="422.0" spacing="10.0" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <Label styleClass="section-title" text="Lista Detalle Compra">
+                    <font>
+                        <Font size="29.0" />
+                    </font>
+                </Label>
+
+                <TableView fx:id="tablaDetalleCompra" prefHeight="200.0" prefWidth="537.0" styleClass="editorial-table">
+
+                    <columns>
+
+                        <TableColumn fx:id="colIdDetalleCompra" prefWidth="100.0" text="ID Detalle Compra" />
+
+                        <TableColumn fx:id="colNoCompra" prefWidth="140.0" text="No. Compra" />
+
+                        <TableColumn fx:id="colIsbn" prefWidth="140.0" text="ISBN" />
+
+                    </columns>
+
+                </TableView>
+
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+
+                    <children>
+
+                        <Button mnemonicParsing="false" onAction="#handleActualizar" styleClass="table-button" text="Actualizar Tabla" />
+
+                        <Button onAction="#handleVolver" styleClass="table-button" text="Volver al Menú">
+
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+
+                        </Button>
+
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </center>
+
+    <left>
+        <VBox prefHeight="400.0" prefWidth="218.0" spacing="10.0" styleClass="form-container" BorderPane.alignment="CENTER">
+
+            <children>
+
+                <Label styleClass="section-title" text="Registrar Detalle Compra">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+
+                <TextField fx:id="txtNoCompra" promptText="No. Compra" styleClass="form-text" />
+
+                <TextField fx:id="txtIsbn" layoutX="10.0" layoutY="27.0" promptText="ISBN" styleClass="form-text" />
+
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+
+                    <children>
+
+                        <Button mnemonicParsing="false" onAction="#handleGuardar" styleClass="primary-button" text="Guardar" />
+
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleLimpiar" styleClass="primary-button" text="Limpiar" />
+
+                        <Label fx:id="lblMensaje" styleClass="message-label" />
+
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </left>
+
+</BorderPane>
