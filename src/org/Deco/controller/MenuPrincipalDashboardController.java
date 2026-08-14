@@ -6,24 +6,22 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import org.Deco.model.Usuario;
-
 
 public class MenuPrincipalDashboardController implements Initializable, DashboardController {
 
     private Usuario usuarioActual;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @Override
     public void iniciarUsuario(Usuario usuario) {
         this.usuarioActual = usuario;
     }
-    
+
     @FXML
     private void handleCategorias() {
         try {
@@ -41,7 +39,7 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
             mostrarError("Error al cargar la vista de editoriales:\n" + e.getMessage());
         }
     }
-    
+
     @FXML
     private void handleClientes() {
         try {
@@ -60,6 +58,16 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
         }
     }
 
+    // NUEVO: abrir Autores Libro
+    @FXML
+    private void handleAutoresLibro() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/AutoresLibro.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de autores libro:\n" + e.getMessage());
+        }
+    }
+
     @FXML
     private void handleNoDisponible() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -73,7 +81,6 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
     private void handleSalir() {
         Platform.exit();
     }
-    
 
     private void mostrarError(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -82,5 +89,5 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
-    
+
 }
