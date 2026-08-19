@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package org.Deco.dao;
 
-/**
- *
- * @author Arias
- */
+import java.util.List;
+import org.Deco.model.Compras;
+
 public interface ComprasDAO {
+    
+    List<Compras> listarTodos();
+    
+    Compras buscarPorId(int noCompra);
+    
+    boolean crear(Compras compra);
+    
+    boolean actualizar(Compras compra);
+    
+    boolean eliminar(int noCompra);
     
 }
