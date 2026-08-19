@@ -30,7 +30,7 @@ public class ComprasDAOImpl implements ComprasDAO {
                         tablaResultado.getInt("no_compra"),
                         fechaHora,
                         tablaResultado.getFloat("total_compra"),
-                        tablaResultado.getInt("cui_cliente")
+                        tablaResultado.getLong("cui_cliente")
                 ));
             }
         } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class ComprasDAOImpl implements ComprasDAO {
                             tablaResultado.getInt("no_compra"),
                             fechaHora,
                             tablaResultado.getFloat("total_compra"),
-                            tablaResultado.getInt("cui_cliente")
+                            tablaResultado.getLong("cui_cliente")
                     );
                 }
             }
@@ -73,7 +73,7 @@ public class ComprasDAOImpl implements ComprasDAO {
              CallableStatement consultaCall = conexion.prepareCall(consulta)) {
             
             consultaCall.setFloat(1, compra.getTotalCompra());
-            consultaCall.setInt(2, compra.getCui());
+            consultaCall.setLong(2, compra.getCui());
             return consultaCall.executeUpdate() > 0;
             
         } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class ComprasDAOImpl implements ComprasDAO {
             
             consultaCall.setInt(1, compra.getNoCompra());
             consultaCall.setFloat(2, compra.getTotalCompra());
-            consultaCall.setInt(3, compra.getCui());
+            consultaCall.setLong(3, compra.getCui());
             return consultaCall.executeUpdate() > 0;
             
         } catch (SQLException e) {

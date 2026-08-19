@@ -59,6 +59,15 @@ public class MenuPrincipalDashboardController implements Initializable, Dashboar
             mostrarError("Error al cargar la vista de autores:\n" + e.getMessage());
         }
     }
+    
+  @FXML
+    private void handleCompras() {
+        try {
+            org.Deco.systen.Main.cambiarVista("/org/Deco/view/ComprasView.fxml");
+        } catch (Exception e) {
+            mostrarError("Error al cargar la vista de compras:\n" + e.getMessage());
+        }
+    }
 
     @FXML
     private void handleNoDisponible() {

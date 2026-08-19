@@ -13,23 +13,23 @@ public class Compras {
     private int noCompra; 
     private LocalDateTime fechaCompra;  
     private float totalCompra; 
-    private int cui; 
+    private long cui; 
 
     public Compras() {
     }
 
-    public Compras(int noCompra, LocalDateTime fechaCompra, float totalCompra, int cui) {
+    public Compras(int noCompra, LocalDateTime fechaCompra, float totalCompra, long cui) {
         this.noCompra = noCompra;
         this.fechaCompra = fechaCompra;
         this.totalCompra = totalCompra;
         this.cui = cui;
     }
 
-    public int getCui() {
+    public long getCui() {
         return cui;
     }
 
-    public void setCui(int cui) {
+    public void setCui(long cui) {
         this.cui = cui;
     }
 

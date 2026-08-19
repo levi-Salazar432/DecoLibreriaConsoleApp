@@ -13,6 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.Deco.dao.ComprasDAO;
+import org.Deco.dao.impl.ComprasDAOImpl;
 import org.Deco.model.Compras;
 import org.Deco.systen.Main;
 
@@ -24,7 +26,6 @@ public class ComprasFXController implements Initializable {
     private TextField txtTotalCompra;
     @FXML
     private TextField txtCui;
-    
     @FXML
     private TableView<Compras> tablaCompras;
     @FXML
@@ -34,17 +35,17 @@ public class ComprasFXController implements Initializable {
     @FXML
     private TableColumn<Compras, Float> colTotalCompra;
     @FXML
-    private TableColumn<Compras, Integer> colCui;
-    
+    private TableColumn<Compras, Long> colCui;
     @FXML
     private Label lblMensaje;
 
+    private final ComprasDAO comprasDAO = new ComprasDAOImpl();
     private final ObservableList<Compras> listaCompras = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL location, ResourceBundle resources) {
         configurarColumnas();
-         cargarTabla(); 
+        cargarTabla();
         seleccionarFila();
     }
 
@@ -53,6 +54,11 @@ public class ComprasFXController implements Initializable {
         colFechaCompra.setCellValueFactory(new PropertyValueFactory<>("fechaCompra"));
         colTotalCompra.setCellValueFactory(new PropertyValueFactory<>("totalCompra"));
         colCui.setCellValueFactory(new PropertyValueFactory<>("cui"));
+    }
+
+    private void cargarTabla() {
+        listaCompras.setAll(comprasDAO.listarTodos());
+        tablaCompras.setItems(listaCompras);
     }
 
     private void seleccionarFila() {
@@ -67,9 +73,39 @@ public class ComprasFXController implements Initializable {
     }
 
     @FXML
+    private void handleGuardar() {
+        try {
+            if (txtTotalCompra.getText().isEmpty() || txtCui.getText().isEmpty()) {
+                mostrarError("Todos los campos obligatorios deben estar llenos.");
+                return;
+            }
+            Compras compras = new Compras();
+            compras.setTotalCompra(Float.parseFloat(txtTotalCompra.getText().trim()));
+            compras.setCui(Long.parseLong(txtCui.getText().trim()));
+            if (comprasDAO.crear(compras)) {
+                lblMensaje.setText("Compra registrada exitosamente.");
+                cargarTabla();
+                limpiarFormulario();
+            } else {
+                mostrarError("No se pudo registrar la compra.");
+            }
+        } catch (NumberFormatException e) {
+            mostrarError("El total y el CUI deben ser números válidos.");
+        } catch (Exception e) {
+            mostrarError("Error al guardar: " + e.getMessage());
+        }
+    }
+
+    @FXML
     private void handleLimpiar() {
         limpiarFormulario();
         lblMensaje.setText("");
+    }
+
+    @FXML
+    private void handleActualizar() {
+        cargarTabla();
+        lblMensaje.setText("Tabla actualizada.");
     }
 
     @FXML

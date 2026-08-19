@@ -23,6 +23,7 @@
             <Button fx:id="btnAutores" onAction="#handleAutores" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Autores" />
             <Button fx:id="btnCategorias" onAction="#handleCategorias" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Categorías" />
             <Button fx:id="btnEditoriales" onAction="#handleEditoriales" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Editoriales" />
+            <Button fx:id="btnCompras" onAction="#handleCompras" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Compras" />
             <Button fx:id="btnSalir" onAction="#handleSalir" prefHeight="45" prefWidth="240" styleClass="exit-button" text="Salir" />
         </VBox>
     </center>
