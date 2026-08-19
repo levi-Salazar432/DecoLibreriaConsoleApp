@@ -39,14 +39,12 @@ public class ComprasFXController implements Initializable {
     @FXML
     private Label lblMensaje;
 
-    // Nota: Asegúrate de tener tu ComprasDAO implementado
-    // private final ComprasDAO comprasDAO = new ComprasDAOImpl();
     private final ObservableList<Compras> listaCompras = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarColumnas();
-        // cargarTabla(); // Descomenta cuando tengas el DAO listo
+         cargarTabla(); 
         seleccionarFila();
     }
 

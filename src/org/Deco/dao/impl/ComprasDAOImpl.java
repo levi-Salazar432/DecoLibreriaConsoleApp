@@ -23,7 +23,6 @@ public class ComprasDAOImpl implements ComprasDAO {
              ResultSet tablaResultado = consultaCall.executeQuery()) {
             
             while (tablaResultado.next()) {
-                // Obtenemos el timestamp de la BD y lo convertimos a LocalDateTime
                 Timestamp timestamp = tablaResultado.getTimestamp("fecha_compra");
                 LocalDateTime fechaHora = (timestamp != null) ? timestamp.toLocalDateTime() : null;
 
