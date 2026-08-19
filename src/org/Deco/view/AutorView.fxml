@@ -10,137 +10,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane
-    xmlns="http://javafx.com/javafx/21.0.1"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="org.Deco.controller.AutorFXController"
-    styleClass="autor-root"
-    stylesheets="@autorview.css">
-
-    <padding>
-        <Insets bottom="20" left="20" right="20" top="20"/>
-    </padding>
+<BorderPane xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.AutorFXController" styleClass="autor-root" stylesheets="@autorview.css">
+    <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 
     <left>
-        <VBox
-            maxWidth="300"
-            minWidth="300"
-            spacing="10"
-            styleClass="form-container">
-
-            <padding>
-                <Insets right="20"/>
-            </padding>
-
-            <Label
-                styleClass="section-title"
-                text="Registrar Autor"/>
-
-            <TextField
-                fx:id="txtIdAutor"
-                promptText="ID"
-                styleClass="form-text"/>
-
-            <TextField
-                fx:id="txtNombre"
-                promptText="Nombre"
-                styleClass="form-text"/>
-
-            <TextField
-                fx:id="txtApellido"
-                promptText="Apellido"
-                styleClass="form-text"/>
-
-            <TextField
-                fx:id="txtNacionalidad"
-                promptText="Nacionalidad"
-                styleClass="form-text"/>
-
-            <TextField
-                fx:id="txtBiografia"
-                promptText="Biografia"
-                styleClass="form-text"/>
-
+        <VBox maxWidth="300" minWidth="300" spacing="10" styleClass="form-container">
+            <padding><Insets right="20" /></padding>
+            <Label styleClass="section-title" text="Registrar Autor" />
+            <TextField fx:id="txtIdAutor" promptText="ID" styleClass="form-text" />
+            <TextField fx:id="txtNombre" promptText="Nombre" styleClass="form-text" />
+            <TextField fx:id="txtApellido" promptText="Apellido" styleClass="form-text" />
+            <TextField fx:id="txtNacionalidad" promptText="Nacionalidad" styleClass="form-text" />
+            <TextField fx:id="txtBiografia" promptText="Biografia" styleClass="form-text" />
             <HBox spacing="10">
-
-                <Button
-                    onAction="#handleGuardar"
-                    prefWidth="120"
-                    text="Guardar"
-                    styleClass="primary-button"/>
-
-                <Button
-                    onAction="#handleLimpiar"
-                    prefWidth="120"
-                    text="Limpiar"
-                    styleClass="primary-button"/>
-
+                <Button onAction="#handleGuardar" prefWidth="120" text="Guardar" styleClass="primary-button" />
+                <Button onAction="#handleLimpiar" prefWidth="120" text="Limpiar" styleClass="primary-button" />
             </HBox>
-
-            <Label
-                fx:id="lblMensaje"
-                styleClass="message-label"/>
-
+            <Label fx:id="lblMensaje" styleClass="message-label" />
         </VBox>
     </left>
 
     <center>
         <VBox spacing="10">
-
-            <Label
-                styleClass="section-title"
-                text="Lista de Autores"/>
-
-            <TableView
-                fx:id="tablaAutores"
-                styleClass="autor-table">
-
+            <Label styleClass="section-title" text="Lista de Autores" />
+            <TableView fx:id="tablaAutores" styleClass="autor-table">
                 <columns>
-
-                    <TableColumn
-                        fx:id="colID"
-                        prefWidth="120"
-                        text="ID"/>
-
-                    <TableColumn
-                        fx:id="colNombre"
-                        prefWidth="140"
-                        text="Nombre"/>
-
-                    <TableColumn
-                        fx:id="colApellido"
-                        prefWidth="140"
-                        text="Apellido"/>
-
-                    <TableColumn
-                        fx:id="colNacionalidad"
-                        prefWidth="200"
-                        text="Nacionalidad"/>
-
-                    <TableColumn
-                        fx:id="colBiografia"
-                        prefWidth="200"
-                        text="Biografia"/>
-
+                    <TableColumn fx:id="colID" prefWidth="120" text="ID" />
+                    <TableColumn fx:id="colNombre" prefWidth="140" text="Nombre" />
+                    <TableColumn fx:id="colApellido" prefWidth="140" text="Apellido" />
+                    <TableColumn fx:id="colNacionalidad" prefWidth="200" text="Nacionalidad" />
+                    <TableColumn fx:id="colBiografia" prefWidth="200" text="Biografia" />
                 </columns>
-
             </TableView>
-
             <HBox spacing="10">
-
-                <Button
-                    onAction="#handleActualizar"
-                    text="Actualizar Tabla"
-                    styleClass="table-button"/>
-
-                <Button
-                    onAction="#handleVolver"
-                    text="Volver al Menú"
-                    styleClass="table-button"/>
-
+                <Button onAction="#handleActualizar" text="Actualizar Tabla" styleClass="table-button" />
+                <Button onAction="#handleVolver" text="Volver al Menú" styleClass="table-button" />
             </HBox>
-
         </VBox>
     </center>
-
 </BorderPane>

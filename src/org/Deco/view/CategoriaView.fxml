@@ -10,109 +10,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane
-    xmlns="http://javafx.com/javafx/21.0.1"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="org.Deco.controller.CategoriaFXController"
-    styleClass="categoria-root"
-    stylesheets="@CategoriaView.css">
-
-    <padding>
-        <Insets bottom="20" left="20" right="20" top="20"/>
-    </padding>
+<BorderPane xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.CategoriaFXController" styleClass="categoria-root" stylesheets="@CategoriaView.css">
+    <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 
     <left>
-        <VBox
-            maxWidth="300"
-            minWidth="300"
-            spacing="10"
-            styleClass="form-container">
-
-            <padding>
-                <Insets right="20"/>
-            </padding>
-
-            <Label
-                styleClass="section-title"
-                text="Registrar Categoría"/>
-
-            <TextField
-                fx:id="txtidCategoria"
-                disable="true"
-                promptText="ID Categoría (Automático)"
-                styleClass="form-text"/>
-
-            <TextField
-                fx:id="txtnombreCategoria"
-                promptText="Nombre de Categoría"
-                styleClass="form-text"/>
-
+        <VBox maxWidth="300" minWidth="300" spacing="10" styleClass="form-container">
+            <padding><Insets right="20" /></padding>
+            <Label styleClass="section-title" text="Registrar Categoría" />
+            <TextField fx:id="txtidCategoria" disable="true" promptText="ID Categoría (Automático)" styleClass="form-text" />
+            <TextField fx:id="txtnombreCategoria" promptText="Nombre de Categoría" styleClass="form-text" />
             <HBox spacing="10">
-
-                <Button
-                    fx:id="btnGuardar"
-                    onAction="#handleGuardar"
-                    prefWidth="120"
-                    text="Guardar"
-                    styleClass="primary-button"/>
-
-                <Button
-                    onAction="#handleLimpiar"
-                    prefWidth="120"
-                    text="Limpiar"
-                    styleClass="primary-button"/>
-
+                <Button fx:id="btnGuardar" onAction="#handleGuardar" prefWidth="120" text="Guardar" styleClass="primary-button" />
+                <Button onAction="#handleLimpiar" prefWidth="120" text="Limpiar" styleClass="primary-button" />
             </HBox>
-
-            <Label
-                fx:id="lblMensaje"
-                styleClass="message-label"/>
-
+            <Label fx:id="lblMensaje" styleClass="message-label" />
         </VBox>
     </left>
 
     <center>
         <VBox spacing="10">
-
-            <Label
-                styleClass="section-title"
-                text="Lista de Categorías"/>
-
-            <TableView
-                fx:id="tablaCategoria"
-                styleClass="categoria-table">
-
+            <Label styleClass="section-title" text="Lista de Categorías" />
+            <TableView fx:id="tablaCategoria" styleClass="categoria-table">
                 <columns>
-
-                    <TableColumn
-                        fx:id="colId"
-                        prefWidth="100"
-                        text="ID"/>
-
-                    <TableColumn
-                        fx:id="colNombre"
-                        prefWidth="300"
-                        text="Nombre de Categoría"/>
-
+                    <TableColumn fx:id="colId" prefWidth="100" text="ID" />
+                    <TableColumn fx:id="colNombre" prefWidth="300" text="Nombre de Categoría" />
                 </columns>
-
             </TableView>
-
             <HBox spacing="10">
-
-                <Button
-                    onAction="#handleActualizar"
-                    text="Actualizar Tabla"
-                    styleClass="table-button"/>
-
-                <Button
-                    onAction="#handleVolver"
-                    text="Volver al Menú"
-                    styleClass="table-button"/>
-
+                <Button onAction="#handleActualizar" text="Actualizar Tabla" styleClass="table-button" />
+                <Button onAction="#handleVolver" text="Volver al Menú" styleClass="table-button" />
             </HBox>
-
         </VBox>
     </center>
-
 </BorderPane>
