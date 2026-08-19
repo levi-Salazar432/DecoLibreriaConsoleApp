@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package org.Deco.dao;
 
-/**
- *
- * @author informatica
- */
+import java.util.List;
+import org.Deco.model.Libro;
+
 public interface LibroDAO {
-    
+    List<Libro> ListarTodos();
+    boolean crear(Libro libro);
+    Libro buscarPorId(String isbn);
+    boolean actualizar(Libro libro);
+    boolean eliminar(String isbn);
 }
