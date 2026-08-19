@@ -23,6 +23,7 @@ public class InicioSesionController implements Initializable {
     @FXML private TextField txtUsuario;
     @FXML private PasswordField txtPassword;
     @FXML private Button btnIniciarSesion;
+    @FXML private Button btnRegistrarse;
     @FXML private Label lblMensaje;
     @FXML private UsuarioDao usuarioDAO;
 
@@ -50,7 +51,17 @@ public class InicioSesionController implements Initializable {
         }
     }
 
-     private void abrirDashBoard(Usuario usuario) {
+    @FXML
+    public void eventoIrRegistro(ActionEvent evento) {
+        try {
+            Main.cambiarVista("/org/Deco/view/RegistrarUsuarioView.fxml");
+        } catch (Exception e) {
+            System.err.println("Error al cargar el registro: " + e.getMessage());
+            lblMensaje.setText("Error interno");
+        }
+    }
+
+    private void abrirDashBoard(Usuario usuario) {
         String rutaFXML = "";
         String tituloDashboard = "";
         switch (usuario.getRol().toLowerCase()) {

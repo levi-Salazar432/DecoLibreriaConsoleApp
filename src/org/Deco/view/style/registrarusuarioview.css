@@ -1,0 +1,68 @@
+.mainFxmlClass {
+    -fx-background-color: #3E3E3E;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #012138;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-color: #012138;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.choice-box .label {
+    -fx-text-fill: #3E3E3E;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #012138;
+    -fx-border-width: 2px;
+}
+
+.choice-box .menu-item {
+    -fx-background-color: white;
+}
+
+.choice-box .menu-item .label {
+    -fx-text-fill: #3E3E3E;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #012138;
+}
+
+.choice-box .menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-color: #012138;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3E3E3E;
+}
+
+#lblMensaje {
+    -fx-text-fill: #FF6B6B;
+    -fx-font-weight: bold;
+}

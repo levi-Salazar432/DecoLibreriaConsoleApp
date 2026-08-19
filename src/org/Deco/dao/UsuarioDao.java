@@ -13,7 +13,6 @@ public class UsuarioDao {
         Usuario usuario = null;
         String sql = "{call sp_iniciar_sesion(?, ?)}";
 
-        
         try(Connection conexion = Conexion.getInstancia().conectar();
                 CallableStatement consultaCall = conexion.prepareCall(sql)) {
             
@@ -35,8 +34,18 @@ public class UsuarioDao {
         return usuario;
     }
 
-    public boolean registrarUsuario(String username, String password, String rol) {
-
-        return false;
-    }                             
+    public boolean registrarUsuario(String username, String passwordHash, String rol) {
+        String sql = "{call sp_registrar_usuario(?, ?, ?)}";
+        try (Connection conexion = Conexion.getInstancia().conectar();
+                CallableStatement consultaCall = conexion.prepareCall(sql)) {
+            consultaCall.setString(1, username);
+            consultaCall.setString(2, passwordHash);
+            consultaCall.setString(3, rol);
+            int filasAfectadas = consultaCall.executeUpdate();
+            return filasAfectadas > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al registrar usuario: " + e.getMessage());
+            return false;
+        }
+    }
 }
