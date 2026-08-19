@@ -6,11 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="rootPane" styleClass="mainFxmlClass" 
-            stylesheets="@Style/menuprincipaldashboardview.css" 
-            xmlns="http://javafx.com/javafx/21" 
-            xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="org.Deco.controller.MenuPrincipalDashboardController">
+<BorderPane fx:id="rootPane" styleClass="mainFxmlClass" stylesheets="@Style/menuprincipaldashboardview.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Deco.controller.MenuPrincipalDashboardController">
     <top>
         <Label styleClass="title-label" text="Deco Librería - Menú Principal" BorderPane.alignment="CENTER">
             <padding><Insets top="25" /></padding>
@@ -23,6 +19,7 @@
             <Button fx:id="btnAutores" onAction="#handleAutores" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Autores" />
             <Button fx:id="btnCategorias" onAction="#handleCategorias" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Categorías" />
             <Button fx:id="btnEditoriales" onAction="#handleEditoriales" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Editoriales" />
+            <Button fx:id="btnLibros" onAction="#handleLibros" prefHeight="45" prefWidth="240" styleClass="menu-button" text="Libros" />
             <Button fx:id="btnSalir" onAction="#handleSalir" prefHeight="45" prefWidth="240" styleClass="exit-button" text="Salir" />
         </VBox>
     </center>
